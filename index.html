@@ -13,22 +13,43 @@
 
         body {
             font-family: 'Segoe UI', Arial, sans-serif;
-            background-color: #1a2a6c;
+            /* Fundo alterado para fundir perfeitamente com as cores da logo (Laranja, Rosa e Magenta) */
+            background-color: #ff5e62;
             background-image: 
-                radial-gradient(circle at 20% 30%, rgba(241, 196, 15, 0.15) 1px, transparent 1px),
-                radial-gradient(circle at 75% 60%, rgba(231, 76, 60, 0.15) 2px, transparent 2px),
-                linear-gradient(135deg, #1a2a6c, #275d8c, #b21f1f);
+                radial-gradient(circle at 20% 30%, rgba(255, 255, 255, 0.2) 1px, transparent 1px),
+                radial-gradient(circle at 75% 60%, rgba(255, 215, 0, 0.2) 2px, transparent 2px),
+                linear-gradient(135deg, #ff9966, #ff5e62, #911d4b);
             background-size: 40px 40px, 60px 60px, 100% 100%;
             display: flex;
             flex-direction: column;
             justify-content: center;
             align-items: center;
             min-height: 100vh;
-            overflow: hidden;
+            overflow-x: hidden;
             color: #fff;
             padding: 20px;
+            position: relative;
         }
 
+        /* Elemento da sua Logo no Canto Inferior Direito */
+        .brand-logo {
+            position: fixed;
+            bottom: 15px;
+            right: 15px;
+            max-width: 120px; /* Tamanho ideal para não cobrir o conteúdo */
+            height: auto;
+            z-index: 100;
+            opacity: 0.85; /* Mistura sutilmente com o fundo */
+            transition: opacity 0.3s ease, transform 0.3s ease;
+            filter: drop-shadow(0px 4px 8px rgba(0, 0, 0, 0.3));
+        }
+
+        .brand-logo:hover {
+            opacity: 1;
+            transform: scale(1.05); /* Efeito dinâmico ao passar o mouse */
+        }
+
+        /* Cabeçalho Festivo */
         .header-container {
             text-align: center;
             margin-bottom: 25px;
@@ -39,16 +60,16 @@
         .header-container h1 {
             font-size: 2.2rem;
             font-weight: 800;
-            text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.5);
+            text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.4);
             letter-spacing: 1px;
         }
 
         .header-container p {
             font-size: 1.1rem;
-            opacity: 0.9;
+            opacity: 0.95;
             margin-top: 5px;
             font-style: italic;
-            text-shadow: 1px 1px 4px rgba(0, 0, 0, 0.4);
+            text-shadow: 1px 1px 4px rgba(0, 0, 0, 0.3);
         }
 
         .decor {
@@ -58,17 +79,18 @@
             animation: pulse 2s infinite alternate;
         }
 
+        /* Container do Carrossel */
         .slideshow-container {
             width: 100%;
             max-width: 650px;
             position: relative;
-            background: rgba(255, 255, 255, 0.1);
-            backdrop-filter: blur(8px);
-            -webkit-backdrop-filter: blur(8px);
+            background: rgba(255, 255, 255, 0.15);
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
             border-radius: 20px;
             padding: 15px;
-            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.4);
-            border: 2px solid rgba(255, 255, 255, 0.2);
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.3);
+            border: 2px solid rgba(255, 255, 255, 0.25);
             animation: fadeInUp 1s ease;
         }
 
@@ -82,7 +104,7 @@
             max-height: 60vh;
             object-fit: cover;
             border-radius: 15px;
-            box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+            box-shadow: 0 5px 15px rgba(0,0,0,0.2);
             animation: fade 1s;
         }
 
@@ -107,6 +129,7 @@
             to { transform: scale(1.15); }
         }
 
+        /* Botões de avançar e voltar */
         .prev, .next {
             cursor: pointer;
             position: absolute;
@@ -120,7 +143,7 @@
             transition: 0.3s ease;
             border-radius: 50%;
             user-select: none;
-            background-color: rgba(0, 0, 0, 0.4);
+            background-color: rgba(0, 0, 0, 0.3);
             border: 1px solid rgba(255, 255, 255, 0.3);
             display: flex;
             justify-content: center;
@@ -131,19 +154,30 @@
         .prev { left: 25px; }
         .next { right: 25px; }
         .prev:hover, .next:hover { 
-            background-color: #f1c40f; 
-            color: #111;
+            background-color: #fff; 
+            color: #ff5e62;
             transform: scale(1.1);
-            border-color: #f1c40f;
+            border-color: #fff;
         }
 
+        /* Rodapé carinhoso */
         .footer-note {
             margin-top: 25px;
+            margin-bottom: 40px; /* Espaço para não chocar com a logo no celular */
             font-size: 0.9rem;
-            opacity: 0.8;
+            opacity: 0.9;
             text-align: center;
             z-index: 10;
-            text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.5);
+            text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.3);
+        }
+
+        /* Ajustes responsivos para telas pequenas */
+        @media (max-width: 480px) {
+            .brand-logo {
+                max-width: 90px;
+                bottom: 10px;
+                right: 10px;
+            }
         }
     </style>
 </head>
@@ -174,6 +208,8 @@
 <div class="footer-note">
     <p>Feito especialmente para o melhor pai do mundo. ❤️</p>
 </div>
+
+<img src="LINK_DA_SUA_LOGO_AQUI.png" alt="Su Bela Criativa" class="brand-logo">
 
 <script>
     let slideIndex = 0;
